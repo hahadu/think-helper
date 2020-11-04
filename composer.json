@@ -1,0 +1,25 @@
+{
+    "name": "hahadu/think-helper",
+    "description": "thinkphp助手函数工具库",
+    "type": "library",
+    "require": {
+        "php": ">=7.0",
+        "phpmailer/phpmailer": "^6.1",
+        "hahadu/helper-function": "^0.6.6",
+        "ext-json": "*"
+    },
+    "license": "Apache-2.0",
+    "authors": [
+        {
+            "name": "hahadu",
+            "email": "582167246@qq.com"
+        }
+    ],
+    "autoload": {
+        "files": ["src/helper.php"],
+        "psr-4": {
+            "Hahadu\\ThinkHerper\\": "src/Helper/"
+        }
+    },
+        "minimum-stability": "dev"
+}
