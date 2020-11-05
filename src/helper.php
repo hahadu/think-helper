@@ -1,11 +1,16 @@
 <?php
+use Hahadu\ThinkHelper\PhpMailHelper;
+use Hahadu\ThinkJumpPage\JumpPage;
+use Hahadu\ThinkHelper\Str;
+use think\facade\Request;
+use think\facade\Session;
 /**
  * 返回用户id
  * @return integer 用户id
  */
 if(!function_exists('get_uid')){
     function get_uid(){
-        return \think\facade\Session::get('user.id');
+        return Session::get('user.id');
     }
 }
 /**
@@ -28,9 +33,9 @@ if(!function_exists('check_login')){
 if(!function_exists('get_user')){
     function get_user($filed=''){
         if(null==$filed){
-            return \think\facade\Session::get('user');
+            return Session::get('user');
         }else{
-            return \think\facade\Session::get('user.'.$filed);
+            return Session::get('user.'.$filed);
         }
     }
 }
@@ -40,7 +45,7 @@ if(!function_exists('get_user')){
  */
 if(!function_exists('is_post')){
     function is_post(){
-        return \think\facade\Request::isPost();
+        return Request::isPost();
     }
 }
 
@@ -56,6 +61,38 @@ if(!function_exists('send_email')){
 
     function send_email($address,$subject,$content,$smtp)
     {
-        return \Hahadu\ThinkHelper\PhpMailHelper::send_email($address,$subject,$content,$smtp);
+        return PhpMailHelper::send_email($address,$subject,$content,$smtp);
+    }
+}
+if(!function_exists('cookie_array')){
+    /****
+     * 支持数组方式读写cookie
+     * @param string $name cookie名称
+     * @param string|array $value cookie值
+     * @param null $option 参数
+     */
+    function cookie_array(string $name, $value = '', $option = null){
+        if(is_array($value)){
+            $value = json_encode($value);
+        }
+        $cookie = cookie($name, $value, $option);
+        if(!is_null(json_decode($cookie))){
+            return json_decode($cookie,true);
+        }else{
+            return $cookie;
+        }
+    }
+
+}
+if(!function_exists('strip_html_tags')){
+    /**
+     * 删除指定的标签和内容
+     * @param array $tags 需要删除的标签数组
+     * @param string $str 数据源
+     * @param string $content 是否删除标签内的内容 0保留内容 1不保留内容
+     * @return string
+     */
+    function strip_html_tags($tags,$str,$content=0){
+        return Str::strip_html_tags($tags,$str,$content);
     }
 }
