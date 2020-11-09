@@ -31,7 +31,7 @@ class Files
      */
     static public function base64_file_info($base64Data,$format='png'){
         $img = base64_decode($base64Data);
-        $cache_name = time().rand_number().DIRECTORY_SEPARATOR.$format;
+        $cache_name = time().rand_number().'.'.$format;
 
         $cache_path = Filesystem::path($cache_name);
         file_put_contents($cache_path,$img);
