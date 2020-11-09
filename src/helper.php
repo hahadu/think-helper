@@ -1,9 +1,14 @@
 <?php
 use Hahadu\ThinkHelper\PhpMailHelper;
 use Hahadu\ThinkJumpPage\JumpPage;
+use Hahadu\ThinkHelper\Img;
 use Hahadu\ThinkHelper\Str;
 use think\facade\Request;
 use think\facade\Session;
+use Hahadu\Helper\NumHelper;
+use Hahadu\ThinkHelper\Files;
+use think\File;
+
 /**
  * 返回用户id
  * @return integer 用户id
@@ -94,5 +99,51 @@ if(!function_exists('strip_html_tags')){
      */
     function strip_html_tags($tags,$str,$content=0){
         return Str::strip_html_tags($tags,$str,$content);
+    }
+}
+
+if(!function_exists('add_water')){
+    /****
+     * 添加水印 需要在config。water中配置水印信息
+     * @param $image
+     * @return string
+     */
+    function add_water($image){
+        return Img::add_water($image);
+    }
+}
+if(!function_exists('rand_number')){
+    /****
+     * 获取一定范围内的随机数字
+     * 跟rand()函数的区别是 位数不足补零 例如
+     * rand(1,9999)可能会得到 465
+     * rand_number(1,9999)可能会得到 0465  保证是4位的
+     * @param integer $min 最小值
+     * @param integer $max 最大值
+     * @return string
+     */
+    function rand_number($min=1, $max=9999){
+        return NumHelper::rand_number($min,$max);
+    }
+}
+if(!function_exists('base64_file_info')){
+    /****
+     * 获取base64提交的文件信息， 方便文件上传方法处理
+     * @param string $base64Data base64文件数据
+     * @param string $format 缓存的文件格式
+     * @return File
+     */
+    function base64_file_info($base64Data,$format='png'){
+        return Files::base64_file_info($base64Data,$format);
+    }
+}
+if(!function_exists('get_file_info')){
+    /****
+     * 获取文件信息
+     * @param string $filename 文件名
+     * @return File
+     */
+    function get_file_info($filename){
+        return Files::get_file_info($filename);
     }
 }
