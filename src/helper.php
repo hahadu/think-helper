@@ -147,3 +147,17 @@ if(!function_exists('get_file_info')){
         return Files::get_file_info($filename);
     }
 }
+/****
+ * 创建二维码
+ * @param string $qr 二维码内容
+ * @param int $qr_size 二维码尺寸
+ * @param string $path 保存图片路径 不保存则留空
+ * @param string $logo_path logo路径，没有则为空
+ * @param int $logo_size logo尺寸，设置logo路径后生效，
+ * @return mixed|string
+ */
+if(!function_exists('create_qrcode')){
+    function create_qrcode($qr,$qr_size=300,$path='',$logo_path='',$logo_size=30){
+        return Img::create_qrcode($qr,$qr_size,$path,$logo_path,$logo_size);
+    }
+}

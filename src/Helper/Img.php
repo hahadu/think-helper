@@ -18,6 +18,7 @@
 namespace Hahadu\ThinkHelper;
 use Hahadu\ImageFactory\Config\Config;
 use Hahadu\ImageFactory\Kernel\Factory;
+use Endroid\QrCode\QrCode;
 
 class Img
 {
@@ -45,5 +46,30 @@ class Img
         return $image;
 
     }
+
+    /****
+     * 创建二维码
+     * @param string $qr 二维码内容
+     * @param int $qr_size 二维码尺寸
+     * @param string $path 保存图片路径 不保存则留空
+     * @param string $logo_path logo路径，没有则为空
+     * @param int $logo_size logo尺寸，设置logo路径后生效，
+     * @return mixed|string
+     */
+    static public function create_qrcode($qr,$qr_size=300,$path='',$logo_path='',$logo_size=30){
+        $qrCode = new QrCode($qr);
+        $qrCode->setSize($qr_size); //设置二维码尺寸
+        if($logo_path){
+            $qrCode->setLogoPath($logo_path); //设置logo
+            $qrCode->setLogoSize($logo_size,$logo_size); //相貌logo尺寸
+        }
+        if($path==null){
+            header('Content-Type: '.$qrCode->getContentType());
+            return $qrCode->writeString();
+        }
+        $qrCode->writeFile($path); //保存文件
+        return $path;
+    }
+
 
 }
