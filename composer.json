@@ -20,7 +20,7 @@
     "autoload": {
         "files": ["src/helper.php"],
         "psr-4": {
-            "Hahadu\\ThinkHerper\\": "src/Helper/"
+            "Hahadu\\ThinkHelper\\": "src/Helper/"
         }
     },
         "minimum-stability": "dev"
