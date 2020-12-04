@@ -5,7 +5,6 @@
     "require": {
         "php": ">=7.0",
         "phpmailer/phpmailer": "^6.1",
-        "hahadu/helper-function": ">=0.6.6",
         "hahadu/think-jump-class": ">=2.0",
         "hahadu/image-factory": ">=1.0",
         "endroid/qr-code": "^3.9",
@@ -21,7 +20,8 @@
     "autoload": {
         "files": ["src/helper.php"],
         "psr-4": {
-            "Hahadu\\ThinkHelper\\": "src/Helper/"
+            "Hahadu\\ThinkHelper\\": "src/Helper/",
+            "Hahadu\\ThinkHelper\\Traits\\": "src/Traits"
         }
     },
         "minimum-stability": "dev"

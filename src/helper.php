@@ -5,7 +5,6 @@ use Hahadu\ThinkHelper\Img;
 use Hahadu\ThinkHelper\Str;
 use think\facade\Request;
 use think\facade\Session;
-use Hahadu\Helper\NumHelper;
 use Hahadu\ThinkHelper\Files;
 use think\File;
 
@@ -110,20 +109,6 @@ if(!function_exists('add_water')){
      */
     function add_water($image){
         return Img::add_water($image);
-    }
-}
-if(!function_exists('rand_number')){
-    /****
-     * 获取一定范围内的随机数字
-     * 跟rand()函数的区别是 位数不足补零 例如
-     * rand(1,9999)可能会得到 465
-     * rand_number(1,9999)可能会得到 0465  保证是4位的
-     * @param integer $min 最小值
-     * @param integer $max 最大值
-     * @return string
-     */
-    function rand_number($min=1, $max=9999){
-        return NumHelper::rand_number($min,$max);
     }
 }
 if(!function_exists('base64_file_info')){
