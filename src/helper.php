@@ -52,6 +52,23 @@ if(!function_exists('is_post')){
         return Request::isPost();
     }
 }
+/*****
+ * 判断是否ajax提交
+ */
+if(!function_exists('is_ajax')){
+    function is_ajax(){
+        return Request::isAjax();
+    }
+}
+/****
+ * 判断是否手机访问
+ */
+if(!function_exists('is_mobile')){
+    function is_mobile(){
+        return Request::isMobile();
+    }
+}
+
 
 if(!function_exists('send_email')){
     /**

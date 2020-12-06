@@ -21,6 +21,7 @@ class OfficeHelper
      * @throws \PhpOffice\PhpSpreadsheet\Reader\Exception
      */
     static public function load_files($inputFileName){
+
         $inputFileType = IOFactory::identify($inputFileName);
         $reader = IOFactory::createReader($inputFileType);
         $reader->setReadDataOnly(true);
