@@ -65,6 +65,7 @@ if(!function_exists('is_ajax')){
  */
 if(!function_exists('is_mobile')){
     function is_mobile(){
+
         return Request::isMobile();
     }
 }

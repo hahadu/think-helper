@@ -5,6 +5,7 @@ use PhpOffice\PhpSpreadsheet\Spreadsheet;
 use PhpOffice\PhpSpreadsheet\Writer\Xlsx;
 use PhpOffice\PhpSpreadsheet\Writer\Xls;
 use PhpOffice\PhpSpreadsheet\Writer\Csv;
+use PhpOffice\PhpSpreadsheet\Cell\DataType;
 
 trait ExcelTrait
 {
@@ -76,7 +77,7 @@ trait ExcelTrait
             $line = [];
             foreach ($value as $k=>$v){
                 $line[strtoupper($k).$k_num]= $v;
-                $sheet->setCellValue(strtoupper($k).$k_num, $v);
+                $sheet->setCellValueExplicit(strtoupper($k).$k_num, $v,DataType::TYPE_STRING);
             }
             $excel_data[$key]=$line;
         }
