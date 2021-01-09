@@ -7,6 +7,7 @@ use think\facade\Request;
 use think\facade\Session;
 use Hahadu\ThinkHelper\Files;
 use think\File;
+use Hahadu\ThinkHelper\ArrayHelper;
 
 /**
  * 返回用户id
@@ -162,5 +163,18 @@ if(!function_exists('get_file_info')){
 if(!function_exists('create_qrcode')){
     function create_qrcode($qr,$qr_size=300,$path='',$logo_path='',$logo_size=30){
         return Img::create_qrcode($qr,$qr_size,$path,$logo_path,$logo_size);
+    }
+}
+
+if(!function_exists('paginate')){
+    /*****
+     * 数组分页
+     * @param $array
+     * @param int|array $listRows 每页数量 数组表示配置参数
+     * @param int|bool  $simple   是否简洁模式或者总记录数
+     * @return Paginator|think\app
+     */
+    function paginate($array, $listRows, $simple = false){
+        return ArrayHelper::paginate($array, $listRows, $simple);
     }
 }
