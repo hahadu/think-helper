@@ -20,7 +20,7 @@ class ArrayHelper
      * @param int|bool  $simple   是否简洁模式或者总记录数
      * @return Paginator|App
      */
-    static function arrayPaginate($array, $listRows, $simple = false){
+    static function paginate($array, $listRows, $simple = false){
 
         $array = Collection::make($array);
         $total = $array->count();
