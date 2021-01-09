@@ -3,6 +3,7 @@
 
 namespace Hahadu\ThinkHelper;
 
+use think\App;
 use think\Collection;
 use think\Paginator;
 
@@ -14,15 +15,14 @@ class ArrayHelper
 {
     /*****
      * 数组分页
-     * @param $array
+     * @param array $array 传入分页的数组
      * @param int|array $listRows 每页数量 数组表示配置参数
      * @param int|bool  $simple   是否简洁模式或者总记录数
-     * @return Paginator|think\app
+     * @return Paginator|App
      */
-    static function paginate($array, $listRows, $simple = false){
+    static function arrayPaginate($array, $listRows, $simple = false){
 
         $array = Collection::make($array);
-        $CurrentPage = Paginator::getCurrentPage(); //当前页
         $total = $array->count();
 
         if (is_int($simple)) {
@@ -50,7 +50,7 @@ class ArrayHelper
 
         $config['path'] = $config['path'] ?? Paginator::getCurrentPath();
 
-        $items = $array->slice(($CurrentPage-1)*$listRows,$listRows);
+        $items = $array->slice(($page-1)*$listRows,$listRows);
 
         return app('think\Paginator',[
             $items,
