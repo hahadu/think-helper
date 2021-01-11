@@ -52,14 +52,7 @@ class ArrayHelper
 
         $items = $array->slice(($page-1)*$listRows,$listRows);
 
-        return app('think\Paginator',[
-            $items,
-            $listRows,
-            $page,
-            $total,
-            $simple,
-            $config,
-        ],true);
+        return Paginator::make($items,$listRows,$page,$total,$simple,$config);
     }
 
 
