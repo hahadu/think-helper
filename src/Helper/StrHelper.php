@@ -18,7 +18,7 @@
 namespace Hahadu\ThinkHelper;
 
 
-class Str
+class StrHelper
 {
     /**
      * 删除指定的标签和内容

@@ -20,7 +20,7 @@ use Hahadu\ImageFactory\Config\Config;
 use Hahadu\ImageFactory\Kernel\Factory;
 use Endroid\QrCode\QrCode;
 
-class Img
+class ImgHelper
 {
     static public function add_water($image){
         $type = config('water.add_water_type');

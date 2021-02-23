@@ -22,7 +22,7 @@ class ArrayHelper
      */
     static function paginate($array, $listRows, $simple = false){
 
-        $array = Collection::make($array);
+        $array = self::make($array);
         $total = $array->count();
 
         if (is_int($simple)) {
@@ -53,6 +53,15 @@ class ArrayHelper
         $items = $array->slice(($page-1)*$listRows,$listRows);
 
         return Paginator::make($items,$listRows,$page,$total,$simple,$config);
+    }
+
+    /*****
+     * 实例化数据集
+     * @param $array
+     * @return Collection
+     */
+    static public function make($array){
+        return Collection::make($array);
     }
 
 

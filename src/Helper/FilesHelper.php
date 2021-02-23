@@ -21,7 +21,7 @@ namespace Hahadu\ThinkHelper;
 use think\facade\Filesystem;
 use think\File;
 
-class Files
+class FilesHelper
 {
     /****
      * 获取base64提交的文件信息， 方便文件上传方法处理
